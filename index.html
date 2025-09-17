@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Role konzultanta – Mrak slov</title>
+  <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    h1 {
+      margin: 0 0 20px;
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #0f172a;
+    }
+    canvas {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kompetence konzultanta</h1>
+
+  <!-- horní řádek: MUSÍ -->
+  <canvas id="cloud-must" width="800" height="300"></canvas>
+
+  <!-- spodní řádek: MŮŽE + NESMÍ -->
+  <div class="row">
+    <canvas id="cloud-may" width="400" height="250"></canvas>
+    <canvas id="cloud-mustnot" width="400" height="250"></canvas>
+  </div>
+
+  <script>
+    // MUSÍ
+    WordCloud(document.getElementById('cloud-must'), {
+      list: [
+        ['MUSÍ', 50],
+        ['Bezpečnost (docházka)', 20],
+        ['Podporuje plnění dílčích kroků', 24],
+        ['Vědět o zásadních krocích', 22],
+        ['Podporovat komunikaci', 22],
+        ['Motivovat', 20],
+        ['Vést skupinu k reflexi', 22],
+        ['Provádí', 18],
+        ['Hlídá čas', 20],
+        ['Garantuje role', 18],
+        ['Zpětná vazba', 20],
+        ['Atmosféra', 18]
+      ],
+      color: '#16a34a',
+      backgroundColor: '#fff',
+      rotateRatio: 0,
+      shuffle: false
+    });
+
+    // MŮŽE
+    WordCloud(document.getElementById('cloud-may'), {
+      list: [
+        ['MŮŽE', 40],
+        ['Doporučuje', 24],
+        ['Inspiruje', 22],
+        ['Usměrňovat', 20],
+        ['Pomůže s (organizací, komunikací)', 22],
+        ['Navádět (otázkami)', 20],
+        ['Odmítnout pozici', 20],
+        ['Až jako „x“ nachází řešení', 22]
+      ],
+      color: '#f59e0b',
+      backgroundColor: '#fff',
+      rotateRatio: 0,
+      shuffle: false
+    });
+
+    // NESMÍ
+    WordCloud(document.getElementById('cloud-mustnot'), {
+      list: [
+        ['NESMÍ', 40],
+        ['Manipulovat', 24],
+        ['Ignorovat', 22],
+        ['Mít rozhodující slovo / určovat', 24],
+        ['Dělat práci týmu', 26]
+      ],
+      color: '#e11d48',
+      backgroundColor: '#fff',
+      rotateRatio: 0,
+      shuffle: false
+    });
+  </script>
+</body>
+</html>
